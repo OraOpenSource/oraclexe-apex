@@ -54,7 +54,7 @@ You can build your own vm with the following instructions.
 ## Download
 ```bash
 #If not root run:
-#sudo -i
+#su -
 
 cd /tmp
 yum install git -y
