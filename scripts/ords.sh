@@ -43,8 +43,6 @@ else
   echo
 
   java -jar ords.war
-  #Make tomcat the owner
-  chown -R tomcat.tomcat /ords/conf
 
   #SQL Developer administration
   echo; echo Manual input required for ORDS admin listener; echo
@@ -53,6 +51,9 @@ else
   echo;
   java -jar ords.war user $OOS_ORDS_USERNAME "Listener Administrator"
 fi;
+
+#Make tomcat the owner
+chown -R tomcat.tomcat /ords/conf
 
 #Deploy to Tomcat
 cd ${CATALINA_HOME}/webapps/
@@ -63,4 +64,3 @@ cd /ords
 cp -r $OOS_SOURCE_DIR/tmp/apex/images .
 mv images apex_images
 
-ln -s /ords/apex_images/ /usr/share/tomcat/webapps/i
