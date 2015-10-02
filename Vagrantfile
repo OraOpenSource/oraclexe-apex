@@ -99,7 +99,7 @@ Vagrant.configure(2) do |config|
 
     rsync -rtv --exclude='files' --exclude='.*' /vagrant/ /tmp/vagrant-deploy
 
-    if [[ `lsb_release -i` =~ (Ubuntu) ]]; then 
+    if [[ 'lsb_release -i' =~ (Ubuntu) ]]; then 
       sed -i s/^.*$/UTC/ /etc/timezone; 
     fi
 
