@@ -90,6 +90,9 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
     export OOS_DEPLOY_TYPE="VAGRANT"
 
+    #226: fix DNS related error with vagrant build
+    echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+
     if [ -n "$(command -v yum)" ]; then
       echo; echo \* Installing rsync with yum \*
       yum install rsync -y

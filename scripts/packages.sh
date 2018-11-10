@@ -104,8 +104,9 @@ if [ "$OOS_MODULE_NODEJS" = "Y" ]; then
   # fi
 
   #13: Bower support (since node.js will be installed by default)
+  #228: fix unhandled 'which' stderror prompt during vagrant build
   echo; echo \* Installing Bower \*; echo
-  if [ "$(which bower)" == "" ]; then
+  if [ "$(which bower 2> /dev/null)" == "" ]; then
     npm install -g bower
   else
     echo bower already installed

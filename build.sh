@@ -119,8 +119,9 @@ fi
 
 
 #Install ratom
+#228: fix unhandled 'which' stderror prompt during vagrant build
 . ${OOS_UTILS_DIR}/echo_title.sh "Installing ratom"
-if [ "$(which ratom)" == "" ]; then
+if [ "$(which ratom 2> /dev/null)" == "" ]; then
   cd $OOS_SOURCE_DIR
   eval "source ./scripts/ratom.sh $OOS_LOG_OPTIONS"
 else

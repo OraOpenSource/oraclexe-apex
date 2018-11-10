@@ -204,7 +204,7 @@ To start/stop/restart Oracle run the following commands:
 ```
 
 ## APEX
-To connect to APEX go to `http://<server_name>/` or `https://<server_name>/` and it will direct you to the APEX login page.
+Typically, to connect to APEX from host go to `http://<server_name>:<host_port>/` or `https://<server_name>:<host_port>/` and it will direct you to the APEX login page. Please check [Vagrant Port Mapping](#vagrant-port-mapping) for host port.
 
 Workspace | Username | Password | Description
 ------ | ------ | ------ | ------
