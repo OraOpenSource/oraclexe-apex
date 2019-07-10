@@ -14,7 +14,7 @@ Software that is installed apart of this package:
 
 ## Oracle XE 11g
 
-Oracle is installed into the folder: ``/u01/app/oracle/product/11.2.0/xe`. This is most conveniently navigated to with the `$ORACLE_HOME` environment variable. This is set up when ever you log into the terminal via the profile: `/etc/profile.d/20oos_oraclexe.sh`.
+Oracle is installed into the folder: `/opt/oracle/product/18c/dbhomeXE`. This is most conveniently navigated to with the `$ORACLE_HOME` environment variable. This is set up when ever you log into the terminal via the profile: `/etc/profile.d/20oos_oraclexe.sh`.
 
 ## Application Express 5.0
 

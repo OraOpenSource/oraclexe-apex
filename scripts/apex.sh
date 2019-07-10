@@ -8,8 +8,9 @@ unzip $OOS_APEX_ZIP_FILENAME
 
 #Install APEX
 echo "@apexins SYSAUX SYSAUX TEMP /i/" > run.sql
+echo 'exit' >> run.sql
 cd apex
-sqlplus -L sys/$OOS_ORACLE_PWD as sysdba @../run.sql
+sqlplus -L sys/$OOS_ORACLE_PWD@localhost:$OOS_ORACLE_TNS_PORT/xepdb1 as sysdba @../run.sql
 
 #Change APEX admin password
 cd $OOS_SOURCE_DIR/tmp
@@ -22,7 +23,7 @@ then
   echo "@apxxepwd $OOS_APEX_ADMIN_PWD" > run.sql
   echo 'exit' >> run.sql
   cd apex
-  sqlplus -L sys/$OOS_ORACLE_PWD as sysdba @../run.sql
+  sqlplus -L sys/$OOS_ORACLE_PWD@localhost:$OOS_ORACLE_TNS_PORT/xepdb1 as sysdba @../run.sql
 
 else
   echo "APEX 5.x/18.x Install. Using new change password method";
@@ -32,26 +33,24 @@ else
   perl -i -p -e 's/password \[\] " HIDE/password \[\] "/g' apxchpwd.sql
 
   #Make sure no indents
-sqlplus -L sys/$OOS_ORACLE_PWD as sysdba @apxchpwd << EOF1
+sqlplus -L sys/$OOS_ORACLE_PWD@localhost:$OOS_ORACLE_TNS_PORT/xepdb1 as sysdba @apxchpwd << EOF1
 $OOS_APEX_ADMIN_USER_NAME
 $OOS_APEX_ADMIN_EMAIL
 $OOS_APEX_ADMIN_PWD
 EOF1
 fi
 
-
-
-
 #APEX REST install
 cd $OOS_SOURCE_DIR/tmp
 #Setup restful services
-if [[ ${OOS_APEX_ZIP_FILENAME,,} == "apex_18.2"* ]]
+if [[ ${OOS_APEX_ZIP_FILENAME,,} == "apex_18.2"*
+  || ${OOS_APEX_ZIP_FILENAME,,} == "apex_19.1"* ]]
 then
   echo "@apex_rest_config_core.sql @ $OOS_APEX_LISTENERUN_PWD $OOS_APEX_REST_PUB_USR_PWD" > run.sql
-else
+else  
   echo "@apex_rest_config_core.sql $OOS_APEX_LISTENERUN_PWD $OOS_APEX_REST_PUB_USR_PWD" > run.sql
 fi
 
 echo "exit" >> run.sql
 cd apex
-sqlplus -L sys/$OOS_ORACLE_PWD as sysdba @../run.sql
+sqlplus -L sys/$OOS_ORACLE_PWD@localhost:$OOS_ORACLE_TNS_PORT/xepdb1 as sysdba @../run.sql

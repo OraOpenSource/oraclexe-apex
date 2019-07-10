@@ -13,7 +13,7 @@ If you need additional help, there is a [How-To video](http://www.oraopensource.
 # Current Software Versions
 App              | Version                 | Description
 ------           | ------                  | ------
-Oracle XE        | 11.2.0.2.0              |
+Oracle XE        | 18.4.0.0.0              |
 SQLcl            | 4.2.0                   | Command line SQL
 APEX             | 18.2                    | Currently supports APEX 18.x, 5.x and APEX 4.x releases. Just reference the appropriate file in `config.properties`
 ORDS             | 18.3.0                  |
@@ -109,15 +109,15 @@ These can be references to files on a web server or to the location on the serve
 
 ```bash
 #Assuming the file resided on myserver.com
-OOS_ORACLE_FILE_URL=http://myserver.com/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+OOS_ORACLE_FILE_URL=http://myserver.com/oracle-database-xe-18c-1.0-1.x86_64.rpm
 #Assuming the file is placed in the /tmp folder on the machine
-OOS_ORACLE_FILE_URL=file:///tmp/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+OOS_ORACLE_FILE_URL=file:///tmp/oracle-database-xe-18c-1.0-1.x86_64.rpm
 ```
 
 You can copy files from your local machine to the remote server easily using ```scp```. Example:
 
 ```bash
-scp oracle-xe-11.2.0-1.0.x86_64.rpm.zip username@servername.com:/tmp
+scp oracle-database-xe-18c-1.0-1.x86_64.rpm username@servername.com:/tmp
 ```
 
 #### File Help
@@ -126,7 +126,7 @@ To assist getting your Oracle installation files configured for OXAR one approac
 
 Instead of having to use `vi` to edit the file you can use `sed` to find and replace. An example is as follows: *(Note: the escaping of forward slashes (`/`) in the URL)*
 ```bash
-sed -i 's/OOS_ORACLE_FILE_URL=CHANGEME/OOS_ORACLE_FILE_URL=https:\/\/www.dropbox.com\/s\/SHAREDLINKCODE\/oracle-xe-11.2.0-1.0.x86_64.rpm.zip?dl=1/g' config.properties
+sed -i 's/OOS_ORACLE_FILE_URL=CHANGEME/OOS_ORACLE_FILE_URL=https:\/\/www.dropbox.com\/s\/SHAREDLINKCODE\/oracle-database-xe-18c-1.0-1.x86_64.rpm?dl=1/g' config.properties
 sed -i 's/OOS_APEX_FILE_URL=CHANGEME/OOS_APEX_FILE_URL=https:\/\/www.dropbox.com\/s\/SHAREDLINKCODE\/apex_5.0.3_en.zip?dl=1/g' config.properties
 sed -i 's/OOS_ORDS_FILE_URL=CHANGEME/OOS_ORDS_FILE_URL=https:\/\/www.dropbox.com\/s\/SHAREDLINKCODE\/ords.3.0.2.294.08.40.zip?dl=1/g' config.properties
 sed -i 's/OOS_SQLCL_FILE_URL=/OOS_SQLCL_FILE_URL=https:\/\/www.dropbox.com\/s\/SHAREDLINKCODE\/sqlcl-4.2.0.16.049.0843-no-jre.zip?dl=1/g' config.properties
@@ -137,7 +137,7 @@ Vagrant automatically maps your current folder to `/vagrant` on its VM. You can 
 
 Example:
 ```bash
-OOS_ORACLE_FILE_URL=file:///vagrant/files/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+OOS_ORACLE_FILE_URL=file:///vagrant/files/oracle-database-xe-18c-1.0-1.x86_64.rpm
 ```
 
 ### Modules
